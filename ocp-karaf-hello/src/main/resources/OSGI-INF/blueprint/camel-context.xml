@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<blueprint xmlns="http://www.osgi.org/xmlns/blueprint/v1.0.0"
+           xmlns:camel-cxf="http://camel.apache.org/schema/blueprint/cxf"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
+           xmlns:ext="http://aries.apache.org/blueprint/xmlns/blueprint-ext/v1.2.0"
+           xmlns:cxf="http://camel.apache.org/schema/blueprint/cxf" 
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+
+    <!-- If we want to use the same properties for both Karaf and OpenShift then we need property place holders
+         like below, and a config map. For Karaf, the propery place holders values must be defined 
+         in a cfg file in /etc/com.iws.hello.cfg. For OpenShift they must be defined in config map -->
+        
+    <cm:property-placeholder persistent-id="com.iws.hello" id="com.iws.hello" update-strategy="reload">
+         <cm:default-properties>         
+            
+            <cm:property name="broker" value="{{broker}}" />
+            <cm:property name="username" value="{{username}}" />
+            <cm:property name="password" value="{{password}}" />
+           
+            <cm:property name="brokerTopic" value="{{brokerTopic}}" />
+            <cm:property name="publishedEndpointUrl" value="{{publishedEndpointUrl}}" />
+            
+        </cm:default-properties>
+    </cm:property-placeholder>
+        
+    <cxf:cxfEndpoint address="/sayHello"
+                     id="sayHello"
+                     wsdlURL="wsdl/hello-service.wsdl">
+        
+        <camel-cxf:properties>
+            <entry key="dataFormat" value="PAYLOAD"/>
+            <entry key="publishedEndpointUrl" value="{{publishedEndpointUrl}}" />
+            
+            <!-- Schema validation disabled as W3Schools example wsdl doesn't play nice
+                 with soap ui generated requests, so diasbled for convenience -->
+            <entry key="schema-validation-enabled" value="false" />
+            
+        </camel-cxf:properties>
+        
+    </cxf:cxfEndpoint>         
+    
+    <bean class="com.iws.hello.HelloService" id="router"/>
+    
+    <camelContext id="hello_service" xmlns="http://camel.apache.org/schema/blueprint">
+        <routeBuilder ref="router"/>
+    </camelContext>
+    
+    <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="jms">
+        <property name="brokerURL" value="${broker}"/>
+        <property name="userName"  value="${username}" />
+        <property name="password"  value="${password}" />
+    </bean>
+    
+</blueprint>

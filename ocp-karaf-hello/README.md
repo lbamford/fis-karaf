@@ -15,6 +15,11 @@ Overview of example purpose:
 
 The service is largely derived from Redhat JBoss fuse quick start examples.
 
+The WSDL used to create the CXF service is from:
+
+https://www.tutorialspoint.com/wsdl/wsdl_example.htm
+
+It is relatively straightforward to replace with any other WSDL.
 
 ### Building
 

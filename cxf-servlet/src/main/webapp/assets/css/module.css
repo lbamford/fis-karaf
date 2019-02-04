@@ -1,0 +1,29 @@
+.container-fluid {
+    padding: 0px 15px 0px 15px;
+}
+
+.module-header{ 
+    border-bottom: 1px solid #e7e7e7;
+    margin-bottom: 25px;
+}
+
+.form-group {
+    padding-bottom: 10px;
+    /*margin-bottom: 35px;*/
+}
+.form-control{
+    margin-bottom:10px;
+}
+
+.new-record{
+    margin-top:10px;
+    margin-right:15px;
+    cursor:pointer;
+}
+
+.error .form-control{
+    border-color: #ff5b57;
+}
+.error .help-inline{
+    color: #ff5b57;
+}

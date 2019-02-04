@@ -1,9 +1,9 @@
 # Hello Service
 
 This is a simple hello quickstart that uses Camel, CXF and AMQ in a standalone Karaf Container or OpenShift pod. 
-The service can be a useful starting point for hosted, contract first (WSDL), SOAP web services.
+The service can be a useful starting point for hosted, contract first (WSDL), SOAP web services that require payloads to be placed on queues for later processing.
 
-The example hello service allows for configuration of SOAP end point, contract first, and JMS queue or topic for recieved SOAP payloads.
+The example hello service allows for configuration of SOAP end point, contract first, and JMS queue or topic for received SOAP payloads.
 
 Overview of example purpose: 
 

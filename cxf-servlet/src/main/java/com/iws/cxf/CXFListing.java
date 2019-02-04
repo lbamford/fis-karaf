@@ -14,7 +14,6 @@ import org.jsoup.select.Elements;
  * CXF service page and process it with jsoup, to allow for easy dom access. Loop through all 
  * services and generate new output for a bootstrap themed datatable. 
  * 
- * @author leebamford
  */
 public class CXFListing extends RouteBuilder {
 

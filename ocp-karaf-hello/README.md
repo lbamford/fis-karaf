@@ -30,6 +30,9 @@ The example can be built with
 If standalone Karaf 
 
     mvn clean install -Ddocker.skip=true
+    
+    #Install in Karaf
+    install -s mvn:com.iws/hello-service/1.0-SNAPSHOT
 
 ### Running the example in OpenShift
 

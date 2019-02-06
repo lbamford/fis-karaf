@@ -8,7 +8,7 @@ The example hello service allows for configuration of SOAP end point, contract f
 Overview of example purpose: 
 
  *  web service to receive hello SOAP requests
- *  write any received hßello SOAP requests to a daily file
+ *  write any received hello SOAP requests to a daily file
  *  put received hello SOAP requests on a message queue, configured by either config map or prop file (env dependent)
  *  responds back to client with velocity template and 202 acknowledgement
 
